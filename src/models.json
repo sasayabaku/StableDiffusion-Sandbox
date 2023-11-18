@@ -1,0 +1,11 @@
+{
+    "models" : [
+        {
+            "url": "https://huggingface.co/nuigurumi/basil_mix/resolve/main/Basil_mix_fixed.safetensors",
+            "minimum": true
+        },{
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+            "minimum": false
+        }
+    ]
+}
