@@ -1,0 +1,31 @@
+version: '3'
+services:
+  bot:
+    image: stablediffusion-sandbox
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    user: root
+    tty: true
+
+    ports:
+      - '8888:8888'
+      - '7860:7860'
+
+    volumes:
+      # - ./resource/bra_v5.safetensors:/stable-diffusion-webui/models/Stable-diffusion/bra_v5.safetensors
+      # - ./resource/museV1_v1.safetensors:/stable-diffusion-webui/models/Stable-diffusion/museV1_v1.safetensors
+      # - ./resource/cyberrealistic_v30.safetensors:/stable-diffusion-webui/models/Stable-diffusion/cyberrealistic_v30.safetensors
+      # - ./resource/majicmixRealistic_v4.safetensors:/stable-diffusion-webui/models/Stable-diffusion/majicmixRealistic_v4.safetensors
+      - ./resource/models:/workspace/stable-diffusion-webui/models/Stable-diffusion
+      # - ./resource:/workspace/stable-diffusion-webui/models/Lora
+      # - ./notebook:/notebook
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
